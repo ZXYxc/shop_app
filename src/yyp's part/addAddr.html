@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>地址管理</title>
+		<link href="./css/user.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="header">
+			<a href="user.html"><div class="back" id="adressBack"></div></a>
+			<p class="title">地址管理</p>
+			<a id="lookup" href="address.html"><p class="title">我的收货地址</p></a>
+		</div>
+		<div class="info">	
+			<form action="" method="post">
+				<input class="recvInfo" type="text" name="recvName" placeholder="姓名:" />
+				<input class="recvInfo" type="text" name="recvPhone" placeholder="手机号码:" />
+				<select class="recvInfo" id="province" name="recvProv" onchange="selectProvince(this);" value="省份">
+					<option value="0" style="display: none; color:lightgrey">省份：</option>
+				</select>
+				<select class="recvInfo" id="city" name="recvCity" placeholder="城市">
+					<option value="0" style="display: none; color:lightgray;">城市：</option>
+				</select>
+				<input class="recvInfo" type="text" name="recvAddr" placeholder="详细地址:" />
+				<input class="submitB" name="submit" type="submit" value="+ ADD" />
+			</form>
+		</div>
+	</body>
+	<script src="../js/user.js"></script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="./css/user.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="header">
+			<p class="title">登陆</p>
+		</div>
+		<div id="login">
+			<form action="http://127.0.0.1:8000/user/Login" method="post">
+				<label id="labelLogin" for="email">邮箱：</label>
+				<input class="login" type="text" name="email" style="top:15%" />
+				<label id="labelPassword" for="password">密码：</label>
+				<input class="login" type="password" name="password" />
+				<input style="button" id="LoginButton" value="登陆" name="submit" />
+			</form>
+			<div id="other">
+				<a class="login_a" href="#">找回密码&nbsp;</a><p class="login_p">|</p><a class="login_a" href="#">&nbsp;注册账号</a>
+			</div>
+		<div>
+	</body>
+</html>
