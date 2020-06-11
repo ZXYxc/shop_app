@@ -275,20 +275,38 @@
                         let numAll = this.selectcarts[i].value;
                         let imgAll = this.selectcarts[i].thumb;
                         let name = this.selectcarts[i].title;
+                        let itemId = this.selectcarts[i].num;
+                        console.log(itemId);
                         //获取时间戳
-                        let timestamp = Date.parse(new Date());
+
                         // 将当前时间换成时间格式字符串
-                        var newDate = new Date();
-                        newDate.setTime(timestamp);
-                        newDate = newDate.toJSON();
+                        var date = new Date();
+                        let Y = date.getFullYear() + '-';
+                        let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                        let D = date.getDate() + ' ';
+                        let h = date.getHours() + ':';
+                        let m = date.getMinutes() + ':';
+                        let s = date.getSeconds();
+                        var newDate = Y+M+D+h+m+s;
                         console.log(newDate);
                         // var cur = i + 1
+                        //后端数据                 num = item['num']
+                        // itemId = item['itemId']；
                         item.push({
+                            "itemId": itemId,
+                            // "price": priceAll,
+                            "num": numAll,
+                            // "img": imgAll,
+                            // "name":name,
+                        });
+                        var item_temp = [];
+                        item_temp.push({
+                            // "itemId": itemId,
                             "price": priceAll,
                             "num": numAll,
                             "img": imgAll,
                             "name":name,
-                        })
+                        });
                     }
                     //卖家留言
                     let remark = this.remark;
@@ -305,45 +323,62 @@
                     }
 
                     let data= {
+                        userId:57,
                         price:price,
                         recieverName:user,
                         reciverPhone:mobile,
                         reciverAddress:address,
                         remark:remark,
-                        paytype:this.paytype,
+                        payState:this.paytype,
                         oderItems:item,
                         generatedTime:newDate,
                         orderssend:false
                     };
+
                     console.log(data);
                     this.$api.order.postOrder(data)
                         .then((res)=>{
-                            console.log("成功",res.data);
-                            this.$dialog.alert({
-                                title: '下单成功',
-                                message: '订购成功后我们会尽快发货,请保持电话畅通'
-                        }).then(() => {
-                            //临时发送该订单内容方便直接查看
-                            this.add_orderdetail(data);
-                            //清空掉选中的数据
-                            this.clear_setCart();
-                            //清空掉购物车的数据,为啥不用id呢？就是一样的产品有不同的套餐,但是id是一样的
-                            //思路,根据购物车中的选择checked等于true去删除
-                            let cart = this.cart_list;
-                            let count = 0;
-                            let flag = [];
-                            if (cart.length)
-                                for(let j=0;j<cart.length;j++){
-                                    if(cart[j].isChecked){
-                                        flag.push(j);
+                            let r = res.data;
+                            if ( r.result == "success") {
+                                var orderId = r.orderId;
+                                this.$dialog.alert({
+                                    title: '下单成功',
+                                    message: '订购成功后我们会尽快发货,请保持电话畅通'
+                                }).then(() => {
+                                    let data2= {
+                                        price:price,
+                                        recieverName:user,
+                                        reciverPhone:mobile,
+                                        reciverAddress:address,
+                                        remark:remark,
+                                        paytype:this.paytype,
+                                        oderItems:item_temp,
+                                        generatedTime:newDate,
+                                        orderssend:false,
+                                        orderId:orderId
+                                    };
+                                    //临时发送该订单内容方便直接查看
+                                    this.add_orderdetail(data2);
+                                    //清空掉选中的数据
+                                    this.clear_setCart();
+                                    //清空掉购物车的数据,为啥不用id呢？就是一样的产品有不同的套餐,但是id是一样的
+                                    //思路,根据购物车中的选择checked等于true去删除
+                                    let cart = this.cart_list;
+                                    let count = 0;
+                                    let flag = [];
+                                    if (cart.length)
+                                        for(let j=0;j<cart.length;j++){
+                                            if(cart[j].isChecked){
+                                                flag.push(j);
+                                            }
+                                        }
+                                    for (let i=0;i<flag.length;i++){
+                                        this.deleteCart(flag[i]-count);
+                                        count++;
                                     }
-                                }
-                                for (let i=0;i<flag.length;i++){
-                                    this.deleteCart(flag[i]-count);
-                                    count++;
-                                }
-                            this.$router.push({path:'/paySuccess'});
-                        });
+                                    this.$router.push({path:'/paySuccess'});
+                                });
+                            }
                     })
                 }
             }

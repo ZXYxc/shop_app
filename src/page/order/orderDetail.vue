@@ -49,6 +49,7 @@
                     <van-cell-group>
                         <van-cell title="支付方式" :value="currentOrder.paytype"/>
                         <van-cell title="订单生成时间" :value="currentOrder.generatedTime"/>
+                        <van-cell title="订单编号" :value="currentOrder.orderId"/>
                         <van-cell title="订单留言" :value="currentOrder.remark"/>
                     </van-cell-group>
                 </div>

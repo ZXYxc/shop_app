@@ -63,6 +63,8 @@ const state = {
     type_list:[],
     //我的订单列表
     order_list:[],
+    //商品详情列表（从后端导入的消息以及增删查改之后的详情）
+    orderList:[],
 
     //名称、编号、简要描述信息、详细描述信息、现价、原价、原产地、生产日期，保质期，库存量，
     // 图片，运费，尺寸情况，备注，是否新品，是否推荐、销量
@@ -168,8 +170,10 @@ const state = {
     //                 }]
     //     }
     // ],
+
+    Disordered_item:[],
     answerid: [], //答案id
-}
+};
 
 export default new Vuex.Store({
     state,

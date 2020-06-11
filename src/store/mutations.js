@@ -10,18 +10,30 @@ const DELETE_ITEM = "DELETE_ITEM";
 const ADD_ITEMS = "ADD_ITEMS";
 const DEL_CART = "DEL_CART";
 const SET_ORDERDETAIL = "SET_ORDERDETAIL";
-const INIT_COMMENTS = "INIT_COMMENTS"
+const INIT_COMMENTS = "INIT_COMMENTS";
+const DISORDER = 'DISORDER';
+const INIT_ORDER ='INIT_ORDER';
 // const INITIALDEL_ITEMNUMIZE_DATA = 'INITIALIZE_DATA'
 
 export default {
+    //初始化商品详情信息
+    [INIT_ORDER](state, obj){
+        state.orderList = obj;
+        // console.log(state.comment_list);
+    },
+    //导入无序数据
+    [DISORDER](state, obj){
+        state.Disordered_item = obj;
+        // console.log(state.comment_list);
+    },
     //初始化评论
     [INIT_COMMENTS](state, obj){
-        let temp = state.comment_list;
-        console.log(temp,obj)
+        state.comment_list= obj.comments;
+        // console.log(state.comment_list);
     },
     //加入购物车
     [ADD_ITEMNUM](state, obj) {
-        console.log(obj);
+        // console.log(obj);
         let item = state.items[obj.tab].children[obj.id];
         // console.log(obj.id+" "+obj.tab);
         let flag = true;

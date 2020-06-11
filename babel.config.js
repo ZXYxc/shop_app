@@ -5,6 +5,7 @@
 // }
 module.exports = {
   presets: ['@vue/cli-plugin-babel/preset'],
+
   // vant引入：
   plugins: [
     [

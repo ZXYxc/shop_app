@@ -142,6 +142,16 @@ const routes = [
         },
         component: (resolve) => require(['../page/order/orderDetail'], resolve)
     },
+    {
+        path:'/changeInfo',
+        name:'changeInfo',
+        meta: {
+            title: 'orderDeta',
+            keepAlive: false,
+            showTab: false
+        },
+        component: (resolve) => require(['../page/mine/modules/changeInfo'], resolve)
+    },
         {
             path: '*',
             redirect: '/index'
