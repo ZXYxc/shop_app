@@ -1,10 +1,15 @@
 
 <template>
   <div class="user-info">
-    <image-pic  width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+
     <div class="main">
       <div class="head_img">
-        <van-image width="90" height="90" alt="暂无图像"></van-image>
+
+        <van-uploader :after-read="onRead" accept="image/gif, image/jpeg" multiple>
+<!--          <van-icon name="photograph" />-->
+                    <van-image width="90" height="90" alt="暂无图像"/>
+        </van-uploader>
+
       </div>
       <div class="main__title">
         <div class="name"> 用户名：57test</div>
@@ -29,6 +34,10 @@ export default {
 
   },
   methods: {
+    onRead(file) {
+      // 此时可以自行将文件上传至服务器
+      console.log(file);
+    },
     doCopy(val) {
       this.$copyText(val).then(
         () => {

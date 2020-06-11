@@ -18,6 +18,7 @@ Vue.prototype.$api = api; // 将api挂载到vue的原型上
 // Vue.config.productionTip = false;
 
 
+
 new Vue({
   router,
   Vuex,

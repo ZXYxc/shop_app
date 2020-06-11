@@ -59,7 +59,7 @@ const state = {
     //结算的商品列表
     pay_list:[],
     Add_list:[],
-    // type_list:["分类1","分类2"],
+    // type_list:["点心","水果"],
     type_list:[],
     //我的订单列表
     order_list:[],

@@ -43,7 +43,8 @@
         methods:{
 
             onClickLeft() {
-                this.$router.push({path:"/order"});
+                // this.$router.push({path:"/order"});
+                this.$router.go(-1);
             },
             newadd(){
                 this.$router.push({path:"/addedit",query:{from:"/selectAdd"}})

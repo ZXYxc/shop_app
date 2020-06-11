@@ -47,9 +47,18 @@ const order = {
 };
 
 const user = {
-    GetUserInfo(){
-        return axios.get(`${base.user}/GetUserInfo/`);
-
+    // "userId" : 123
+    // "username" : "xxx"
+    // "sex" : ""
+    // "birthday" : ""
+    GetUserInfo(userId,username,sex,birthday){
+        return axios.post(`${base.user}/UpdateUserInfo/`,
+            {
+                "userId" : userId,
+                "username" :username,
+                "sex" : sex,
+                "birthday" : birthday
+            }   );
     }
 
 };

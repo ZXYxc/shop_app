@@ -5,19 +5,18 @@
                     add="/mine"/>
         </div>
         <div class="info" id="info">
-            <form action="" method="post">
                 <div class="content">
                     <van-row gutter="20">
                         <van-col span="8" class="left_span">昵称</van-col>
                         <van-col span="16">
-                            <input class="recvInfo" type="text" name="rickName" :value="nickName" />
+                            <input v-model="nickName" class="recvInfo" type="text" ref="nickName"/>
                         </van-col>
                     </van-row>
                     <van-row gutter="20">
                         <van-col span="8" class="left_span">性别</van-col>
                         <van-col span="16">
-                            <select class="recvInfo">
-                                <option :value="sex" style="display: none;">{{sex}}</option>
+                            <select class="recvInfo" v-model="sex">
+                                <option value="" style="display: none;">请选择</option>
                                 <option style="font-size: 14px">男</option>
                                 <option style="font-size: 14px">女</option>
                                 <option style="font-size: 14px">保密</option>
@@ -27,14 +26,14 @@
                     <van-row gutter="20">
                         <van-col span="8" class="left_span">生日</van-col>
                         <van-col span="16">
-                            <input class="recvInfo" type="date" name="birthday" :value="birthday"/>
+                            <input class="recvInfo" type="date" v-model="birthday"/>
                         </van-col>
                     </van-row>
                 </div>
                 <div class="submitB" >
-                    <van-button name="submit" type="info" size="small">提交</van-button>
+                    <van-button name="submit" type="info" size="small" @click="sub">提交</van-button>
                 </div>
-            </form>
+
         </div>
     </div>
 </template>
@@ -48,36 +47,43 @@
         },
         data() {
             return{
-                nickName: "",
+                value: '',
+                nickName: '',
                 sex: "",
                 birthday: "",
                 age: ""
             };
         },
+        methods:{
+            sub(){
+                console.log(this.nickName);
+                console.log(this.sex);
+                console.log(this.birthday);
+                if (this.nickName!=null && this.sex!=null && this.birthday!=null)
+                    this.$toast("请输入完整信息");
+                else {
+                    this.$api.user.GetUserInfo(57,this.nickName,this.sex,this.birthday).
+                    then((res)=>{
+                        var info = res.data.result;
+                        if (info==="success"){
+                            this.$toast("提交成功");
+                        }
+                    })
+                }
+                }
+
+
+
+        },
         mounted: function(){
-            /*在vuex中存储用户的id用以api请求*/
-            this.$api.get('url').then(function(successData){
-                var info = JSON.parse(successData);
-                /*
-                    {
-                        nickName: "",
-                        sex: "",
-                        birthday: "",
-                        age: ""
-                    }
-                */
-                this.nickName = info['nickName'];
-                this.sex = info['sex'];
-                this.birthday = info['birthday'];
-                this.age = info['age'];
-            })
+
         }
     }
 </script>
 
 <style scoped>
     .content{
-        margin: 10px;
+        margin: 30px 10px 10px;
     }
     .content>>>.van-row{
         margin: 10px;
