@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的</title>
+		<script src="./js/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<link href="./css/user.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<!--顶部区域-->
+		<div id="header">
+		</div> 
+		<!--头像、用户名-->
+		<div id="user_info">
+			<!--用v-if来判断不同情况显示-->
+			<div id="img">
+				<img :src="imgPath" href="imgPath"/>
+			</div>
+			<div id="name">
+				<div v-if="flag==='1'"><p>{{name}}<p></div>
+				<div v-else-if="flag==='0'">
+					<p v-html="name"></p>
+				</div>
+			</div>
+		</div>
+		<div id="buttons">
+			<button id="address" onclick="window.location.href='addAddr.html'">收货地址</button>
+			<br />
+			<button id="changeInfo" onclick="window.location='changeInfo.html'">修改资料</button>
+			<br />
+			<button id="myOrder" onclick="window.location=''">我的订单</button>
+		</div>
+	</body>
+	<script src="./js/userTrue.js"></script>
+	<script type="text/javascript">
+		var screenHeight = document.documentElement.clientHeight;
+		var screenWidth = document.documentElement.clientWidth;
+		var body = document.getElementsByTagName("body");
+		body[0].style.width = screenWidth+"px";
+		body[0].style.height = screenHeight+"px";
+	</script>
+</html>

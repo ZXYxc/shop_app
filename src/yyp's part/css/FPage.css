@@ -1,0 +1,185 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+div {
+	width: 100%;
+}
+
+#header {
+	height: 8%;
+	background-color: deepskyblue;
+	background-attachment: fixed;
+	position: fixed;
+	top: 0%;
+	z-index: 2;
+}
+
+#showPics {
+	height: 28%;
+	position: absolute;
+	top: 8%;
+}
+
+#showBox {
+	height: 30px;
+	width: 250px;
+	position: absolute;
+	top: 93%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+#classes {
+	height: 45%;
+	background-color: aliceblue;
+	position: absolute;
+	top: 36%;
+}
+
+#className {
+	display: absolute;
+	bottom: 0%;
+	height: 100%;
+	width: 100%;
+	background-color: #D3D3D3;
+}
+
+#items {
+	background-color: aliceblue;
+	position: absolute;
+	bottom: 5%;
+	top: 81%;
+}
+
+#showItems {
+	position: absolute;
+	top: 115px;
+	margin-bottom: 105px;
+}
+
+#footer {
+	height: 8%;
+	position: fixed;
+	top: 95%;
+	background-color: deepskyblue;
+}
+
+.title {
+	height: 115px;
+	position: absolute;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.titleName {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: deepskyblue;
+	font-size: 35px;
+}
+
+.cycle {
+	display: inline-block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border-radius: 1px solid lightgrey;
+	border-radius: 10px 10px 10px 10px;
+	background-color: lightgrey;
+	margin: 5px;
+}
+
+.cycle1 {
+	display: inline-block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border-radius: 1px solid lightgrey;
+	border-radius: 10px 10px 10px 10px;
+	background-color: grey;
+	margin: 5px;
+}
+
+.topPic {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	z-index: -1;
+}
+
+div .class{
+	display: inline-block;
+	height: 43%;
+	width: 50%;
+	position: absolute;
+	background-color: whitesmoke;
+}
+
+#class1 {
+	top: 115px;
+	left: 0px;
+}
+
+#class2 {
+	left: 50%;
+	top: 115px;
+}
+
+#class3 {
+	bottom: 0px;
+	left: 0px;
+}
+
+#class4 {
+	bottom: 0px;
+	left: 50%;
+}
+
+a .theme {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+img .theme {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.divItem {
+	width: 50%;
+	height: 400px;
+	position: relative;
+	display: inline-block;
+	background-color: white;
+}
+
+.imgItem {
+	width: 100%;
+	height: 90%;
+	position: absolute;
+}
+
+.itemParm {
+	width: 100%;
+	height: 10%;
+	position: absolute;
+	left: 0%;
+	bottom: 5%;
+	text-align: center;
+	font-size: 35px;
+	font-family: "microsoft sans serif";
+}
