@@ -37,6 +37,7 @@
           style="margin-right:8px"
         />
       </div>
+        <van-divider />
     </div>
   </div>
 </template>
@@ -64,7 +65,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/*@import "@/styles/variables.scss";*/
 
 .comment-item-component {
   .title {
@@ -94,6 +94,7 @@ export default {
       flex-direction: row;
       margin-top: 8px;
     }
+      border-bottom: #5588aa;
   }
 }
 </style>

@@ -14,10 +14,11 @@
                 :usertel="add.usertel"
                 :addressInfo="add.addressInfo"
                 ref="Item" />
-        <van-button type="info" @click="backToOrder" style="margin-right: 5px" size="small">确定</van-button>
-        <van-button type="info" @click="deletehandle" style="margin-right: 5px" size="small">删除</van-button>
-        <van-button type="info" @click="newadd" size="small">添加新的地址</van-button>
-
+        <div class="btn">
+            <van-button type="info" @click="backToOrder" style="margin-right: 5px" size="small">确定</van-button>
+            <van-button type="info" @click="deletehandle" style="margin-right: 5px" size="small">删除</van-button>
+            <van-button type="info" @click="newadd" size="small">添加新的地址</van-button>
+        </div>
     </div>
 
 
@@ -119,6 +120,11 @@
 </script>
 
 <style scoped>
+    .btn{
+        left: 0;
+        right: 0;
+        margin-left: 70px;
+    }
     .nav {
         position: fixed;
         top: 0;

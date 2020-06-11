@@ -9,6 +9,8 @@ import {
     Empty,
     Tab,
     Tabs,
+    Row,
+    Col,
     Stepper,
     Toast,
     Dialog,
@@ -58,6 +60,8 @@ import {
 
 Vue.use(Toast)
     .use(Stepper)
+    .use(Col)
+    .use(Row)
     .use(CollapseItem)
     .use(Collapse)
     .use(Popup)

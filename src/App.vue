@@ -26,6 +26,7 @@ export default {
             .then(response => {
               this.items = response.data;
               this.addItems(this.items);
+              this.addDisorder(this.items);
               // console.log(this.items)
             });
 
@@ -33,6 +34,7 @@ export default {
   methods:{
     ...mapActions([
       'addItems',
+      'addDisorder'
     ]),
   },
 

@@ -9,6 +9,7 @@
         </van-nav-bar>
         <div class="nav--placeholder" style="width:100%;height:46px"></div>
         <van-address-edit
+                class="btn"
                 :area-list="areaList"
                 show-postal
                 show-delete
@@ -105,7 +106,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .van-toast{
     top:20%;
 }
@@ -116,4 +117,8 @@ export default {
     width: 100%;
     z-index: 1;
 }
+    .btn>>>.van-button--danger{
+        border: #3283fa;
+        background-color: rgb(99, 137, 250);
+    }
 </style>

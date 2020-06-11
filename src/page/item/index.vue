@@ -7,6 +7,7 @@
             placeholder="请输入搜索关键词"/>
 
     <van-tree-select
+            class="color"
             height="600px" width="50px"
             :items="items"
             :main-active-index.sync="active"
@@ -118,7 +119,7 @@
             },
             //ID是商品的编号
             addToCart(id){
-                let obj = {}
+                let obj = {};
                 obj.id = id;
                 obj.tab =  this.focusIndex;
                 this.addCart(obj);
@@ -135,8 +136,11 @@
     };
 </script>
 
-<style lang="less">
+<style scoped>
 body{
     margin-top: 10px;
 }
+    .color>>>.van-sidebar-item--select::before{
+        background-color: rgb(169, 188, 245);
+    }
 </style>

@@ -46,12 +46,13 @@
 <!--        详情/评价-->
         <van-tabs v-model="active" class="tabs" color="rgb(25, 137, 250)"  @click="toEvaluate(active)">
             <van-tab title="商品详情" class="dec">
-                <p>商品的生产地是：{{item.manufacture}}</p>
-                <p>商品的生产日期是：{{item.produce_time}}</p>
-                <p>商品的保质期是：{{item.quality_time}}</p>
-                <p>商品的库存是：{{item.quantity}}</p>
-                <p>商品的运费是：{{item.expense}}</p>
-                <p>商品的大小是：{{item.size}}</p>
+                <p>库存：{{item.quantity}}</p>
+                <p>运费：{{item.expense}}</p>
+                <p>大小：{{item.size}}</p>
+                <p>生产地区：{{item.manufacture}}</p>
+                <p>生产日期：{{item.produce_time}}</p>
+                <p>保质日期：{{item.quality_time}}</p>
+
             </van-tab>
 
             <van-tab title="商品评价">
@@ -107,7 +108,7 @@
                     // console.log(this.item.id);
                     this.comments = response.data;
                     this.initComments(this.comments);
-                    console.log(this.comments);
+                    // console.log(this.comments);
                 });
             // console.log(this.item);
         },
@@ -204,8 +205,8 @@
     .dec{
         font-size: 14px;
         text-align: left;
-        margin-left: 10px;
-        margin-top: -2px;
+        margin-left: 15px;
+        margin-top: 15px;
     }
 
 </style>

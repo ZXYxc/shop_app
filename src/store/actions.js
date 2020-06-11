@@ -10,9 +10,15 @@ export default {
     deleteCart({ commit}, index) {
         commit('DEL_CART', index);
     },
+    //初始化数据
     addItems({ commit}, obj) {
         // console.log(tab);
         commit('ADD_ITEMS', obj.items);
+    },
+    //无序数据，就是接受后端的数据，方便查找
+    addDisorder({ commit}, obj) {
+        // console.log(tab);
+        commit('DISORDER', obj.items);
     },
     changeSelect({ commit},data){
         commit('ALL_SELECT',data);
@@ -33,7 +39,12 @@ export default {
     //初始化评论信息
     initComments({ commit},data){
         commit('INIT_COMMENTS',data);
-    }
+    },
+    //初始化详情列表 orderList
+    InitOrder({ commit},data){
+        commit('INIT_ORDER',data);
+    },
+
     // SET_ADDRESSLIST({ commit},data){
     //     commit('SET_ADDRESSLIST',data);
     // }

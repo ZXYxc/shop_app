@@ -13,17 +13,10 @@ const goods = {
         return axios.get(`${base.goods}/ListItem`);
         },
     getComments(itemid){
-        console.log(itemid);
-        // let config =JSON.stringify(itemid)
+
         return axios.post(
             `${base.goods}/GetComments/`,
             qs.stringify(itemid)
-        //     {
-        //     params: {'itemId':1},
-        //     // paramsSerializer:function (params) {
-        //     //     return qs.stringify(params, {arrayFormat:'indices'})
-        //     // }
-        // }
         );
     }
 };
@@ -32,14 +25,36 @@ const goods = {
 const order = {
 
     postOrder(data){
+        // console.log(data);
         return axios.post(
             `${base.order}/Create/`,
-            qs.stringify(data)
+            data,
+        );
+    },
+
+    Get_Order(userId){
+        return axios.post(`${base.order}/GetOrderByInfo/`,
+            {'userId':userId}
+        );
+    },
+
+    Del_Order(userId,orderId){
+        return axios.post(`${base.order}/DeleteOrder/`,
+            {'userId':userId,'orderId':orderId}
         );
     }
+
 };
 
-export default  {goods,order};
+const user = {
+    GetUserInfo(){
+        return axios.get(`${base.user}/GetUserInfo/`);
+
+    }
+
+};
+
+export default  {goods,order,user};
 
 let items = goods.getList();
 console.log(items);
