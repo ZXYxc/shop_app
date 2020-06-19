@@ -59,7 +59,7 @@
                 console.log(this.nickName);
                 console.log(this.sex);
                 console.log(this.birthday);
-                if (this.nickName!=null && this.sex!=null && this.birthday!=null)
+                if (!(this.nickName!=null && this.sex!=null && this.birthday!=null))
                     this.$toast("请输入完整信息");
                 else {
                     this.$api.user.GetUserInfo(57,this.nickName,this.sex,this.birthday).

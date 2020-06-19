@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store/index';
+
 // import App from '../App.vue'
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
@@ -192,8 +194,10 @@ router.afterEach(() => {
 // 路由判断登录 根据路由配置文件的参数
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requireAuth)){ // 判断该路由是否需要登录权限
-        console.log('需要登录');
-        if (localStorage.token) { // 判断当前的token是否存在 ； 登录存入的token
+        // console.log(store.state.login_flag);
+        // store.state.flag = 0;
+        // if (localStorage.token) { // 判断当前的token是否存在 ； 登录存入的token
+        if (store.state.login_flag) { // 判断当前的token是否存在 ； 登录存入的token
             next();
         }
         else {

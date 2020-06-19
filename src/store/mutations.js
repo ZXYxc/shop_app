@@ -2,20 +2,35 @@
 // dispatch：含有异步操作，例如向后台提交数据，写法： this.$store.dispatch('mutations方法名',值)
 // commit：同步操作，写法：this.$store.commit('mutations方法名',值)
 
+//加入购物车
 const ADD_ITEMNUM = 'ADD_ITEMNUM';
-// const ALL_SELECT = "ALL_SELECT"
+//加入用户地址
 const SET_ADDRESSLIST="SET_ADDRESSLIST";
+//加入订单
 const ADD_PAY ="ADD_PAY";
+//删除某个商品
 const DELETE_ITEM = "DELETE_ITEM";
+//初始化数据，并变成树形结构，方便item页的读取
 const ADD_ITEMS = "ADD_ITEMS";
+//删除购物车的某项
 const DEL_CART = "DEL_CART";
+//临时加入订单详细信息
 const SET_ORDERDETAIL = "SET_ORDERDETAIL";
+//初始化评论
 const INIT_COMMENTS = "INIT_COMMENTS";
+//初始化无序数据
 const DISORDER = 'DISORDER';
+//初始化商品详情信息
 const INIT_ORDER ='INIT_ORDER';
+//
+const  changeFlag = ' changeFlag';
 // const INITIALDEL_ITEMNUMIZE_DATA = 'INITIALIZE_DATA'
 
 export default {
+    [ changeFlag](state){
+        state.login_flag =1;
+        // console.log(state.comment_list);
+    },
     //初始化商品详情信息
     [INIT_ORDER](state, obj){
         state.orderList = obj;

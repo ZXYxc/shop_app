@@ -5,7 +5,7 @@
       <p class="header__title">snackApp</p>
     </div>
 
-    <van-form class="form" @submit="onSubmit">
+<!--    <van-form class="form" @submit="onSubmit">-->
       <van-field
         v-model="form.phonenum"
         type="number"
@@ -45,15 +45,17 @@
           :loading="loading"
           type="info"
           loading-text="登录中..."
-          native-type="submit"
+          @click="mysubmit"
         >提交</van-button>
       </div>
-    </van-form>
+<!--    </van-form>-->
   </div>
 </template>
 
 <script>
-export default {
+  import { mapState,mapActions} from "vuex";
+
+  export default {
   name: 'Login',
   data() {
     return {
@@ -64,6 +66,9 @@ export default {
       loading: false
     }
   },
+    computed: mapState({
+      flag: 'login_flag', //商品详情信息
+    }),
   watch: {
     $route: {
       handler(route) {
@@ -74,9 +79,12 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'changeFlag'
+    ]),
     // 校检手机号
     checkPhoneNum(num) {
-      if (num === 123456789) return true
+      if (num === 123456789) return true;
       const reg = /^[1][3,4,5,7,8][0-9]{9}$/
       if (reg.test(num)) {
         return true
@@ -85,24 +93,25 @@ export default {
     },
 
     // 提交
-    onSubmit() {
-      this.loading = true;
-      this.$store
-        .dispatch('user/login', this.form)
-        .then(() => {
-          this.$notify({
-            type: 'success',
-            message: '登录成功',
-            duration: 2000,
-            onOpened: () => {
-              location.href = this.redirect;
-              this.loading = false
-            }
+    mysubmit() {
+          console.log("1111");
+          this.$dialog.alert({
+            title: '登录成功',
+            message: '欢迎来到零食商城'
+          }).then(() => {
+            this.changeFlag();
+            this.$router.push("/item");
+
           })
-        })
-        .catch(() => {
-          this.loading = false
-        })
+          // this.$notify({
+          //   type: 'success',
+          //   message: '登录成功',
+          //   duration: 2000,
+          //   onOpened: () => {
+          //     location.href = this.redirect;
+          //     this.loading = false
+          //   }
+          // })
     }
   }
 }

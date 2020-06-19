@@ -44,6 +44,10 @@ export default {
     InitOrder({ commit},data){
         commit('INIT_ORDER',data);
     },
+    //
+    changeFlag({ commit}){
+        commit(' changeFlag');
+    },
 
     // SET_ADDRESSLIST({ commit},data){
     //     commit('SET_ADDRESSLIST',data);

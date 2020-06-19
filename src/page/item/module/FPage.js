@@ -1,5 +1,5 @@
-var showPics = new Vue({
-	el: "#showPics",
+var this = new Vue({
+	el: "#this",
 	data: {
 		nowPic: "",
 		testPic: "./img/email.png",
@@ -9,8 +9,8 @@ var showPics = new Vue({
 	},
 	methods: {
 		show() {
-			showPics.nowPic = showPics.pics[showPics.i%4];
-			//console.log(showPics.nowPic);
+			this.nowPic = this.pics[this.i%4];
+			//console.log(this.nowPic);
 			for(var j=1; j<=4; j++){
 				if((this.i%4+1) == j){
 					document.getElementById(this.id+j).setAttribute("class","cycle1");
@@ -28,10 +28,10 @@ var showPics = new Vue({
 				var data = response['data']['items'];
 				console.log(data[0]);
 				for(var i=0; i<data.length; i++){
-					showPics.pics.push(data[i]['picPath1']);
-					if(showPics.pics.length == 4) break;
+					this.pics.push(data[i]['picPath1']);
+					if(this.pics.length == 4) break;
 				}
-				console.log(showPics.pics);
+				console.log(this.pics);
 			})
 		}
 	},
